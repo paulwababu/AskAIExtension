@@ -1,6 +1,8 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.tabs.executeScript({
-      code: 'console.log("AskAI background script triggered!");'
-    });
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: {tabId: tab.id},
+    function: () => {
+      console.log("AskAI background script triggered!");
+    }
   });
-  
+});

@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "AskAI",
   "version": "1.0",
   "description": "Get AI suggestions for highlighted text.",
@@ -12,7 +12,9 @@
     }
   ],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
   }
 }
