@@ -1,0 +1,37 @@
+#ask-ai-overlay {
+    position: absolute;
+    z-index: 9999;
+  }
+  
+  #ask-ai-form {
+    display: flex;
+    justify-content: space-between; /* Aligns children on both ends */
+    align-items: center;
+    background: #fafafa;
+    border: 0.5px #dcdcdc solid;
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    padding: 8px 12px;
+    width: 458px;
+  }
+  
+  #ask-ai-input {
+    background: transparent;
+    border: none;
+    color: #000;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    outline: none;
+    width: 100%;
+  }
+  
+  #submit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0 8px;
+  }
+  
