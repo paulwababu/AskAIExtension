@@ -20,7 +20,7 @@ document.addEventListener('mouseup', function(event) {
       // Create input field
       const askAiInput = document.createElement('input');
       askAiInput.id = 'ask-ai-input';
-      askAiInput.placeholder = '✨ Find a better way to word this';
+      askAiInput.placeholder = '✨ How can AI help you?';
 
       // Create submit button
       const submitButton = document.createElement('button');
@@ -41,19 +41,20 @@ document.addEventListener('mouseup', function(event) {
       // Add event listener for AskAI form submission
       submitButton.addEventListener('click', function() {
         submitButton.innerHTML = '⏳'; // Loader icon
-        fetch('your-url-here')
-          .then(response => response.json())
-          .then(data => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://pesapedia.co.ke/api/v2/prometheus_voice?text=' + encodeURIComponent(selectedText), true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            const data = JSON.parse(xhr.responseText);
             document.querySelector('.result-text').innerText = data.result;
             resultDiv.classList.remove('hidden'); // Show results
-          })
-          .catch(error => {
+          } else if (xhr.readyState == 4) {
             document.querySelector('.result-text').innerText = 'An error occurred';
             resultDiv.classList.remove('hidden'); // Show results
-          })
-          .finally(() => {
-            submitButton.innerHTML = '⏎'; // Enter icon
-          });
+          }
+        };
+        xhr.send();
+        submitButton.innerHTML = '<i class="fas fa-level-down-alt"></i>'; // Enter icon using Font Awesome
       });
 
       // Submit on Enter
